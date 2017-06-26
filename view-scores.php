@@ -12,23 +12,35 @@ include_once('config.php');
 include_once('adnav.php');
 
 $result = mysql_query("SELECT u.fullname,s.subject,s.score FROM (users u join scores s on s.student_id) where s.student_id = u.id");
-?>
 
+$arr = [];
+while($row = mysql_fetch_array($result)){
+	
+	$arr[$row["subject"]][] = $row;
+}
+
+foreach($arr as $subject=>$scores){
+?>
+<caption><h3><?=$subject;?></h3></caption>
 <table border="1">
 <thead>
-<tr><th>#</th><th>Student Name</th><th>Subject</th><th>Score</th></tr>
+<tr><th>#</th><th>Student Name</th><th>Score</th></tr>
 </thead>
 <tbody>
 <?php
 $i = 1;
-while($row = mysql_fetch_array($result)){
+foreach($scores as $score){
 ?>
-<tr><td><?=$i;?></td><td><?=$row['fullname'];?></td><td><?=$row['subject'];?></td><td><?=$row['score'];?></td></tr>
+<tr><td><?=$i;?></td><td><?=$score['fullname'];?></td><td><?=$score['score'];?></td></tr>
 <?php
 $i++;
 }
 ?>
 </tbody>
 </table>
+
+<?php
+}
+?>
 </body>
 </html>

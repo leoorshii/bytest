@@ -29,9 +29,7 @@ if(isset($_POST["generate"])){
 	
 	mysql_query("insert into scores set subject = '{$subject}', student_id = {$student_id}, score = {$score} on duplicate key update score = {$score}");
    
-    print("<pre>");
-   	print_r($row);
-	print("</pre>");
+    header("Location: view-scores.php");
 	
    }
    exit;
