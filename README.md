@@ -1,17 +1,20 @@
 # yudimy
 
+###Random Scoring Application
 
+Technologies used
+__________________
 
---- Technologies used
-
-HTML & CSS
-PHP
-MySQL
+-HTML & CSS 
+-PHP
+-MySQL
 
 
 Find yudimy.sql, config.php at project root directory
 
-#Super Admin Login
+Super Admin Login
+___________________
+
   Username - admin
   Password - admin
 
